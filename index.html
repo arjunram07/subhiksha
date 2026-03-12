@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nrityiksha | Classical & Contemporary Dance | Subhiksha Arjun</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9941a;
+    --gold-light: #f0c040;
+    --gold-pale: #f5e6b0;
+    --crimson: #8b1a1a;
+    --crimson-deep: #5a0e0e;
+    --saffron: #e07b20;
+    --ivory: #fdf6e3;
+    --dark: #1a0f05;
+    --dark-mid: #2d1a08;
+    --teal: #1a5c5a;
+    --teal-light: #2a8c88;
+    --pink: #c4426a;
+    --text-main: #3a1a08;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--ivory);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── ORNAMENTAL PATTERN OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(201,148,26,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(196,66,106,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: linear-gradient(to bottom, rgba(26,15,5,0.98), rgba(26,15,5,0.85));
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,148,26,0.3);
+    padding: 0 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-shadow: 0 0 20px rgba(201,148,26,0.5);
+  }
+
+  .nav-logo span {
+    color: var(--saffron);
+    font-size: 0.7rem;
+    display: block;
+    letter-spacing: 0.3em;
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    margin-top: -4px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,230,176,0.75);
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--crimson), var(--crimson-deep));
+    border: 1px solid var(--gold);
+    color: var(--gold-pale) !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2px;
+  }
+
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: linear-gradient(135deg, #a02020, var(--crimson)) !important; box-shadow: 0 0 20px rgba(139,26,26,0.5); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(26,15,5,0.95) 0%, rgba(26,15,5,0.7) 40%, rgba(26,15,5,0.4) 100%);
+    z-index: 1;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+    height: 100%;
+    filter: sepia(20%) contrast(1.1) brightness(0.85);
+  }
+
+  /* Decorative mandala rings */
+  .mandala-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(201,148,26,0.15);
+    z-index: 1;
+    animation: rotateSlow linear infinite;
+  }
+
+  .mandala-ring:nth-child(1) { width: 600px; height: 600px; top: -100px; right: -100px; animation-duration: 60s; }
+  .mandala-ring:nth-child(2) { width: 400px; height: 400px; top: 0px; right: 0px; border-color: rgba(224,123,32,0.1); animation-duration: 40s; animation-direction: reverse; }
+  .mandala-ring:nth-child(3) { width: 200px; height: 200px; top: 100px; right: 100px; border-color: rgba(196,66,106,0.12); animation-duration: 25s; }
+
+  @keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 0 8rem;
+    padding-top: 70px;
+  }
+
+  .hero-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-tag::before, .hero-tag::after {
+    content: '';
+    height: 1px;
+    width: 40px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+
+  .hero-tag::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--gold-light);
+    text-shadow: 0 0 60px rgba(201,148,26,0.4), 0 2px 4px rgba(0,0,0,0.8);
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    letter-spacing: 0.4em;
+    color: var(--saffron);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+
+  .hero-desc {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgba(245,230,176,0.85);
+    line-height: 1.7;
+    max-width: 500px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease 1s both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--saffron));
+    color: var(--dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(201,148,26,0.4);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(201,148,26,0.5);
+    color: var(--gold-pale);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,148,26,0.1);
+    color: var(--gold-light);
+  }
+
+  /* Hero decorative bottom */
+  .hero-bottom-ornament {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1.5s ease 1.5s both;
+  }
+
+  .scroll-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    color: rgba(201,148,26,0.6);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .section-eyebrow::before, .section-eyebrow::after {
+    content: '❋';
+    color: var(--saffron);
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--gold-light);
+    font-weight: 700;
+    text-shadow: 0 0 40px rgba(201,148,26,0.3);
+    margin-bottom: 1rem;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+
+  .divider-line.right {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .divider-gem {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    box-shadow: 0 0 10px var(--gold);
+  }
+
+  /* ─── TICKER / EVENTS MARQUEE ─── */
+  .events-ticker {
+    background: linear-gradient(to right, var(--crimson-deep), var(--crimson), var(--crimson-deep));
+    border-top: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    padding: 0.75rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ticker-label {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    animation: tickerScroll 40s linear infinite;
+    padding-left: 180px;
+  }
+
+  .ticker-item {
+    white-space: nowrap;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-pale);
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .ticker-item::after {
+    content: '◆';
+    color: var(--gold);
+    font-size: 0.5rem;
+  }
+
+  @keyframes tickerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── WHAT WE DO ─── */
+  #what-we-do {
+    padding: 8rem 4rem;
+    background: linear-gradient(to bottom, var(--dark), var(--dark-mid));
+    position: relative;
+  }
+
+  #what-we-do::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .offering-card {
+    background: linear-gradient(135deg, rgba(45,26,8,0.8), rgba(26,15,5,0.9));
+    border: 1px solid rgba(201,148,26,0.2);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+    cursor: default;
+  }
+
+  .offering-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: linear-gradient(to bottom, var(--gold), var(--saffron));
+    transition: height 0.4s;
+  }
+
+  .offering-card:hover { 
+    background: linear-gradient(135deg, rgba(60,35,10,0.9), rgba(35,20,5,0.95));
+    border-color: rgba(201,148,26,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .offering-card:hover::before { height: 100%; }
+
+  .offering-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .offering-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .offering-desc {
+    font-size: 1rem;
+    color: rgba(245,230,176,0.7);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .offering-tag {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    border: 1px solid rgba(201,148,26,0.3);
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* ─── USP BANNER ─── */
+  .usp-banner {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light), var(--teal));
+    border-top: 1px solid rgba(201,148,26,0.3);
+    border-bottom: 1px solid rgba(201,148,26,0.3);
+    padding: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .usp-banner::before {
+    content: '✦';
+    position: absolute;
+    font-size: 20rem;
+    color: rgba(255,255,255,0.03);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .usp-headline {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .usp-sub {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgba(245,230,176,0.85);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  .usp-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .usp-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(201,148,26,0.4);
+    color: var(--gold-pale);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    padding: 0.6rem 1.5rem;
+    backdrop-filter: blur(5px);
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    padding: 8rem 4rem;
+    background: var(--dark-mid);
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .about-image-frame {
+    position: relative;
+  }
+
+  .about-img-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-img-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--gold), transparent, var(--saffron), transparent, var(--gold));
+    z-index: 1;
+    border-radius: 0;
+  }
+
+  .about-img-inner {
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    margin: 2px;
+  }
+
+  .about-img-inner img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    object-position: center top;
+    filter: sepia(10%) contrast(1.05);
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .about-img-inner:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Decorative corner ornaments */
+  .corner-ornament {
+    position: absolute;
+    width: 40px; height: 40px;
+    z-index: 3;
+  }
+
+  .corner-ornament.tl { top: -10px; left: -10px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .corner-ornament.tr { top: -10px; right: -10px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+  .corner-ornament.bl { bottom: -10px; left: -10px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .corner-ornament.br { bottom: -10px; right: -10px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+  .about-name-plate {
+    position: absolute;
+    bottom: 20px;
+    right: -20px;
+    background: linear-gradient(135deg, var(--crimson-deep), var(--crimson));
+    border: 1px solid var(--gold);
+    padding: 1rem 1.5rem;
+    z-index: 4;
+  }
+
+  .about-name-plate h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+  }
+
+  .about-name-plate p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgba(245,230,176,0.7);
+    margin-top: 0.2rem;
+  }
+
+  .about-text h2 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .about-text .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--saffron);
+    margin-bottom: 2rem;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+    color: rgba(245,230,176,0.8);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .about-text p strong {
+    color: var(--gold-pale);
+    font-weight: 500;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 3rem;
+    border: 1px solid rgba(201,148,26,0.2);
+  }
+
+  .stat-item {
+    padding: 1.5rem;
+    text-align: center;
+    background: rgba(201,148,26,0.05);
+    border-right: 1px solid rgba(201,148,26,0.15);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 2rem;
+    color: var(--gold-light);
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(201,148,26,0.7);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── INSTAGRAM / GALLERY PREVIEW ─── */
+  #gallery {
+    padding: 8rem 4rem;
+    background: var(--dark);
+    position: relative;
+  }
+
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .insta-tile {
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+    background: var(--dark-mid);
+    cursor: pointer;
+  }
+
+  .insta-tile-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: linear-gradient(135deg, var(--dark-mid), rgba(201,148,26,0.08));
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s;
+  }
+
+  .insta-tile:hover .insta-tile-inner { transform: scale(1.05); }
+
+  .insta-tile-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,15,5,0.6), transparent);
+  }
+
+  /* Mosaic pattern for gallery tiles */
+  .insta-tile:nth-child(1) .insta-tile-inner { background: linear-gradient(135deg, #3d1a0a, #5a2010); }
+  .insta-tile:nth-child(2) .insta-tile-inner { background: linear-gradient(135deg, #1a3d2a, #0d2a1a); }
+  .insta-tile:nth-child(3) .insta-tile-inner { background: linear-gradient(135deg, #3d2a0a, #5a3510); }
+  .insta-tile:nth-child(4) .insta-tile-inner { background: linear-gradient(135deg, #2a0d1a, #1a0810); }
+  .insta-tile:nth-child(5) .insta-tile-inner { background: linear-gradient(135deg, #1a1a3d, #0d0d2a); }
+  .insta-tile:nth-child(6) .insta-tile-inner { background: linear-gradient(135deg, #3d0a1a, #2a0510); }
+  .insta-tile:nth-child(7) .insta-tile-inner { background: linear-gradient(135deg, #0a3d2a, #051a15); }
+  .insta-tile:nth-child(8) .insta-tile-inner { background: linear-gradient(135deg, #3d2d0a, #2a1d05); }
+
+  .tile-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,15,5,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: background 0.3s;
+    z-index: 2;
+  }
+
+  .insta-tile:hover .tile-overlay { background: rgba(201,148,26,0.15); }
+
+  .tile-label {
+    position: absolute;
+    bottom: 10px;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(245,230,176,0.8);
+    z-index: 3;
+  }
+
+  .tile-emoji { font-size: 3rem; z-index: 1; }
+
+  .gallery-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(201,148,26,0.3);
+    padding: 1rem 2.5rem;
+    color: var(--gold-pale);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .instagram-link:hover {
+    background: rgba(201,148,26,0.1);
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  .insta-icon {
+    width: 20px; height: 20px;
+    fill: currentColor;
+  }
+
+  /* ─── EVENTS BOX ─── */
+  #events {
+    padding: 8rem 4rem;
+    background: linear-gradient(to bottom, var(--dark-mid), var(--dark));
+  }
+
+  .events-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .events-main { }
+
+  .event-card {
+    border: 1px solid rgba(201,148,26,0.2);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(45,26,8,0.6), rgba(26,15,5,0.8));
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--gold), var(--saffron));
+  }
+
+  .event-card:hover {
+    border-color: rgba(201,148,26,0.4);
+    transform: translateX(4px);
+  }
+
+  .event-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-pale);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-details {
+    font-size: 0.95rem;
+    color: rgba(245,230,176,0.65);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .event-meta {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .event-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid;
+  }
+
+  .badge-kuchipudi { border-color: var(--saffron); color: var(--saffron); }
+  .badge-western { border-color: var(--pink); color: var(--pink); }
+  .badge-workshop { border-color: var(--teal-light); color: var(--teal-light); }
+  .badge-online { border-color: rgba(201,148,26,0.5); color: var(--gold); }
+
+  .event-register {
+    margin-left: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(201,148,26,0.4);
+    padding: 0.3rem 1rem;
+    transition: all 0.3s;
+  }
+
+  .event-register:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  /* Scrolling events sidebar */
+  .events-sidebar {
+    position: sticky;
+    top: 90px;
+  }
+
+  .sidebar-box {
+    border: 1px solid rgba(201,148,26,0.3);
+    background: linear-gradient(to bottom, rgba(45,26,8,0.9), rgba(26,15,5,0.95));
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    background: linear-gradient(135deg, var(--crimson-deep), var(--crimson));
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .sidebar-header h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-pale);
+  }
+
+  .sidebar-scroll {
+    height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(201,148,26,0.3) transparent;
+  }
+
+  .sidebar-item {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(201,148,26,0.1);
+    transition: background 0.2s;
+  }
+
+  .sidebar-item:hover { background: rgba(201,148,26,0.05); }
+
+  .sidebar-item-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .sidebar-item-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--gold-pale);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .sidebar-item-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: var(--saffron);
+  }
+
+  .sidebar-cta {
+    padding: 1.25rem 1.5rem;
+    background: rgba(201,148,26,0.08);
+    text-align: center;
+    border-top: 1px solid rgba(201,148,26,0.2);
+  }
+
+  .sidebar-cta a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials {
+    padding: 8rem 4rem;
+    background: linear-gradient(135deg, var(--dark-mid), var(--dark), var(--dark-mid));
+    position: relative;
+    overflow: hidden;
+  }
+
+  #testimonials::before {
+    content: '"';
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 40rem;
+    color: rgba(201,148,26,0.02);
+    position: absolute;
+    top: -100px;
+    left: -50px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    background: linear-gradient(135deg, rgba(45,26,8,0.7), rgba(26,15,5,0.9));
+    border: 1px solid rgba(201,148,26,0.15);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .testimonial-card:hover {
+    border-color: rgba(201,148,26,0.35);
+    background: linear-gradient(135deg, rgba(60,35,10,0.8), rgba(35,20,5,0.95));
+  }
+
+  .testimonial-stars {
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(245,230,176,0.8);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--crimson), var(--saffron));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 700;
+    border: 1px solid rgba(201,148,26,0.3);
+    flex-shrink: 0;
+  }
+
+  .author-info h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold-pale);
+    letter-spacing: 0.08em;
+  }
+
+  .author-info p {
+    font-size: 0.8rem;
+    color: rgba(201,148,26,0.6);
+    font-style: italic;
+    margin-top: 0.1rem;
+  }
+
+  .quote-mark {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 3rem;
+    color: rgba(201,148,26,0.1);
+    line-height: 1;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    padding: 8rem 4rem;
+    background: var(--dark);
+    position: relative;
+  }
+
+  #contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .contact-info h3 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+
+  .contact-info p {
+    font-size: 1.05rem;
+    color: rgba(245,230,176,0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(201,148,26,0.1);
+  }
+
+  .contact-detail:last-of-type { border-bottom: none; }
+
+  .contact-icon {
+    width: 40px; height: 40px;
+    background: rgba(201,148,26,0.1);
+    border: 1px solid rgba(201,148,26,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-detail p {
+    font-size: 0.95rem;
+    color: rgba(245,230,176,0.75);
+    margin: 0;
+    font-style: normal;
+  }
+
+  .contact-detail a {
+    color: rgba(245,230,176,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail a:hover { color: var(--gold-light); }
+
+  /* Contact form */
+  .contact-form {
+    background: linear-gradient(135deg, rgba(45,26,8,0.6), rgba(26,15,5,0.8));
+    border: 1px solid rgba(201,148,26,0.2);
+    padding: 3rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(26,15,5,0.8);
+    border: 1px solid rgba(201,148,26,0.25);
+    color: var(--gold-pale);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(35,20,5,0.9);
+  }
+
+  .form-group textarea { height: 120px; resize: vertical; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--crimson-deep);
+    border-top: 1px solid var(--gold);
+    padding: 4rem 4rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+  }
+
+  .footer-brand .nav-logo {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.95rem;
+    color: rgba(245,230,176,0.6);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-btn {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(201,148,26,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(245,230,176,0.6);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s;
+  }
+
+  .social-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+    background: rgba(201,148,26,0.1);
+  }
+
+  .footer-col h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.9rem;
+    color: rgba(245,230,176,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-style: italic;
+  }
+
+  .footer-col ul li a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,148,26,0.2);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-bottom p {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: rgba(245,230,176,0.4);
+    text-transform: uppercase;
+  }
+
+  /* Scroll-to-top */
+  .scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 45px; height: 45px;
+    background: linear-gradient(135deg, var(--gold), var(--saffron));
+    color: var(--dark);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    z-index: 999;
+    transition: all 0.3s;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .scroll-top:hover { transform: scale(1.1) rotate(45deg); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 2rem; padding-top: 80px; }
+    #what-we-do, #about, #gallery, #events, #testimonials, #contact { padding: 5rem 2rem; }
+    .about-grid, .contact-grid, .events-layout { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .about-name-plate { right: 0; }
+    .events-sidebar { position: static; }
+    .hero-title { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    Nrityiksha
+    <span>नृत्यिक्षा · by Subhiksha Arjun</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what-we-do">What We Do</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <img src="/mnt/user-data/uploads/Screenshot_2026-03-12_at_10_36_55_PM.png" alt="Subhiksha Arjun performing Kuchipudi" class="hero-img">
+  <div class="hero-bg"></div>
+  <!-- Decorative rings -->
+  <div class="mandala-ring"></div>
+  <div class="mandala-ring"></div>
+  <div class="mandala-ring"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Classical · Contemporary · Worldwide</div>
+    <h1 class="hero-title">Nrityiksha</h1>
+    <p class="hero-subtitle">नृत्यिक्षा — The Art of Sacred Movement</p>
+    <p class="hero-desc">
+      Where ancient Kuchipudi meets the world — one step, one gesture, one breath at a time. 
+      Learn from anywhere. Dance as you are.
+    </p>
+    <div class="hero-btns">
+      <a href="#events" class="btn-primary">Join a Class</a>
+      <a href="#about" class="btn-outline">Meet Subhiksha</a>
+    </div>
+  </div>
+
+  <div class="hero-bottom-ornament">
+    <span class="scroll-text">Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- EVENTS TICKER -->
+<div class="events-ticker">
+  <div class="ticker-label">✦ UPCOMING</div>
+  <div class="ticker-track">
+    <div class="ticker-item">Kuchipudi Foundations Batch — April 5, 2026 · Online</div>
+    <div class="ticker-item">Western Contemporary Workshop — April 12–13 · Bangalore</div>
+    <div class="ticker-item">Summer Intensive Camp — May 2026 · Register Now</div>
+    <div class="ticker-item">Global Kuchipudi Masterclass — April 20 · Zoom Worldwide</div>
+    <div class="ticker-item">Private 1-on-1 Sessions — Open Slots Available</div>
+    <div class="ticker-item">Group Batch (Beginners) — Starting April 8 · Limited Seats</div>
+    <!-- duplicate for seamless loop -->
+    <div class="ticker-item">Kuchipudi Foundations Batch — April 5, 2026 · Online</div>
+    <div class="ticker-item">Western Contemporary Workshop — April 12–13 · Bangalore</div>
+    <div class="ticker-item">Summer Intensive Camp — May 2026 · Register Now</div>
+    <div class="ticker-item">Global Kuchipudi Masterclass — April 20 · Zoom Worldwide</div>
+    <div class="ticker-item">Private 1-on-1 Sessions — Open Slots Available</div>
+    <div class="ticker-item">Group Batch (Beginners) — Starting April 8 · Limited Seats</div>
+  </div>
+</div>
+
+<!-- WHAT WE DO -->
+<section id="what-we-do">
+  <div class="section-header">
+    <div class="section-eyebrow">Our Offerings</div>
+    <h2 class="section-title">What We Do</h2>
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line right"></div>
+    </div>
+  </div>
+
+  <div class="offerings-grid">
+    <div class="offering-card">
+      <span class="offering-icon">🙏</span>
+      <h3 class="offering-title">Classical Kuchipudi</h3>
+      <p class="offering-desc">Rooted in the sacred traditions of Andhra Pradesh, Kuchipudi is a divine conversation between body, music, and devotion. Learn authentic abhinaya, nritta, and nritya from a dedicated practitioner.</p>
+      <span class="offering-tag">Classical · Heritage Art</span>
+    </div>
+
+    <div class="offering-card">
+      <span class="offering-icon">💃</span>
+      <h3 class="offering-title">Western Contemporary</h3>
+      <p class="offering-desc">Fuse global dance sensibilities with a strong Indian foundation. From hip-hop to contemporary styles, explore movement that speaks your personal language — no boundaries, all expression.</p>
+      <span class="offering-tag">Contemporary · Fusion</span>
+    </div>
+
+    <div class="offering-card">
+      <span class="offering-icon">🌐</span>
+      <h3 class="offering-title">Online 1-on-1 Classes</h3>
+      <p class="offering-desc">Personalized, focused, and entirely tailored to you. Learn at your own pace, from your own space — whether you're in Mumbai, Melbourne, or Manhattan. Timezone-flexible scheduling.</p>
+      <span class="offering-tag">Personal · Anywhere</span>
+    </div>
+
+    <div class="offering-card">
+      <span class="offering-icon">👯</span>
+      <h3 class="offering-title">Group Batches</h3>
+      <p class="offering-desc">Learn alongside a vibrant community of dancers. Weekly group sessions that build rhythm, precision, and lifelong friendships — open for all levels, online and in-person.</p>
+      <span class="offering-tag">Community · Group Learning</span>
+    </div>
+
+    <div class="offering-card">
+      <span class="offering-icon">🏛️</span>
+      <h3 class="offering-title">Intensive Workshops</h3>
+      <p class="offering-desc">Deep dives into specific styles, techniques, or repertoire. Weekend intensives, themed workshops, and seasonal camps — designed for those hungry to grow faster.</p>
+      <span class="offering-tag">Intensive · Weekend</span>
+    </div>
+
+    <div class="offering-card">
+      <span class="offering-icon">✨</span>
+      <h3 class="offering-title">Learn a Single Dance</h3>
+      <p class="offering-desc">Our signature USP — want to learn just one piece for a wedding, celebration, or personal joy? We teach single dances from scratch, with no long-term commitment required.</p>
+      <span class="offering-tag">★ Signature Offering</span>
+    </div>
+  </div>
+
+  <div class="usp-banner" style="margin-top: 3px;">
+    <h2 class="usp-headline">✦ You Only Need One Dance ✦</h2>
+    <p class="usp-sub">No mandatory course bundles. No year-long commitments. Learn exactly the dance you want — be it one Kuchipudi piece, a Western routine, or a custom choreography for your special occasion.</p>
+    <div class="usp-pills">
+      <span class="usp-pill">No Prior Experience Needed</span>
+      <span class="usp-pill">Any Age, Any Level</span>
+      <span class="usp-pill">Learn From Anywhere</span>
+      <span class="usp-pill">Classical & Western</span>
+      <span class="usp-pill">Flexible Scheduling</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-frame">
+      <div class="about-img-wrapper">
+        <div class="about-img-inner">
+          <img src="/mnt/user-data/uploads/Screenshot_2026-03-12_at_10_36_55_PM.png" alt="Subhiksha Arjun - Kuchipudi at temple">
+        </div>
+      </div>
+      <div class="corner-ornament tl"></div>
+      <div class="corner-ornament tr"></div>
+      <div class="corner-ornament bl"></div>
+      <div class="corner-ornament br"></div>
+      <div class="about-name-plate">
+        <h3>Subhiksha Arjun</h3>
+        <p>Kuchipudi Artist & Educator</p>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="section-eyebrow" style="justify-content: flex-start; margin-bottom: 0.5rem;">About Us</div>
+      <h2>The Soul<br>Behind the Dance</h2>
+      <p class="subtitle">SUBHIKSHA ARJUN · FOUNDER & PRINCIPAL GURU</p>
+      <p>
+        <strong>Subhiksha Arjun</strong> is a classically trained Kuchipudi artist and passionate dance educator whose work bridges the sacred traditions of South Indian classical dance with the vibrant energy of contemporary movement.
+      </p>
+      <p>
+        Trained under renowned gurus, Subhiksha brings <strong>authentic storytelling, precise technique, and infectious enthusiasm</strong> to every student she teaches — whether they're pursuing a lifetime of dance or simply learning one meaningful piece.
+      </p>
+      <p>
+        Through <strong>Nrityiksha</strong> (literally, <em>"dance learning"</em> in Sanskrit), she has cultivated a global community of students across India, the US, UK, Australia, and beyond — all connected by their love for movement and her nurturing, detail-oriented teaching style.
+      </p>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Students Worldwide</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Countries Reached</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8+</span>
+          <span class="stat-label">Years Teaching</span>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+        <a href="https://www.instagram.com/nrityiksha/" target="_blank" class="btn-primary">Follow on Instagram</a>
+        <a href="#contact" class="btn-outline">Book a Trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header">
+    <div class="section-eyebrow">Moments in Motion</div>
+    <h2 class="section-title">Gallery</h2>
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line right"></div>
+    </div>
+  </div>
+
+  <div class="insta-grid">
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">🙏</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Kuchipudi Recital 2024</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">💫</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Student Showcase</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">🌸</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Temple Performance</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">🎭</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Navarasa Workshop</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">✨</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Online Class Community</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">🕊️</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Annual Arangetram</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">🌺</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Fusion Choreography</div>
+      </div>
+    </div>
+    <div class="insta-tile">
+      <div class="insta-tile-inner">
+        <div class="tile-emoji">🥁</div>
+        <div class="tile-overlay"></div>
+        <div class="tile-label">Live Stage 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-cta">
+    <a href="https://www.instagram.com/nrityiksha/" target="_blank" class="instagram-link">
+      <svg class="insta-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      View Full Gallery on Instagram @nrityiksha
+    </a>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="section-header">
+    <div class="section-eyebrow">What's On</div>
+    <h2 class="section-title">Events & Classes</h2>
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line right"></div>
+    </div>
+  </div>
+
+  <div class="events-layout">
+    <div class="events-main">
+
+      <div class="event-card">
+        <div class="event-date">✦ APRIL 5, 2026 · ONLINE</div>
+        <h3 class="event-title">Kuchipudi Foundations — New Batch</h3>
+        <p class="event-details">An immersive 8-week program covering the fundamentals of Kuchipudi — basic adavus, mudras, expressions, and a complete varnam. Perfect for absolute beginners or those returning to dance.</p>
+        <div class="event-meta">
+          <span class="event-badge badge-kuchipudi">KUCHIPUDI</span>
+          <span class="event-badge badge-online">ONLINE · WORLDWIDE</span>
+          <a href="#contact" class="event-register">Register Now →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">✦ APRIL 12–13, 2026 · BANGALORE</div>
+        <h3 class="event-title">Western Contemporary Weekend Intensive</h3>
+        <p class="event-details">A 2-day deep-dive into contemporary dance vocabulary. Covering floor work, partnering basics, and a complete contemporary piece for staging. Open to intermediate and above dancers.</p>
+        <div class="event-meta">
+          <span class="event-badge badge-western">WESTERN</span>
+          <span class="event-badge badge-workshop">WORKSHOP</span>
+          <a href="#contact" class="event-register">Register Now →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">✦ APRIL 20, 2026 · ZOOM WORLDWIDE</div>
+        <h3 class="event-title">Global Kuchipudi Masterclass — Abhinaya</h3>
+        <p class="event-details">A 3-hour deep-dive into the art of Abhinaya (expression) — the soul of classical Indian dance. Open to dancers of any background who wish to explore facial expressions and storytelling through movement.</p>
+        <div class="event-meta">
+          <span class="event-badge badge-kuchipudi">KUCHIPUDI</span>
+          <span class="event-badge badge-online">ONLINE · WORLDWIDE</span>
+          <a href="#contact" class="event-register">Register Now →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date">✦ STARTING MAY 2026 · ONGOING</div>
+        <h3 class="event-title">Summer Intensive Dance Camp</h3>
+        <p class="event-details">4-week summer program combining classical Kuchipudi technique, Carnatic music theory, and a final presentation. Ideal for students aged 8–25. Both online and in-person options available.</p>
+        <div class="event-meta">
+          <span class="event-badge badge-kuchipudi">KUCHIPUDI</span>
+          <span class="event-badge badge-western">WESTERN</span>
+          <span class="event-badge badge-workshop">SUMMER CAMP</span>
+          <a href="#contact" class="event-register">Enquire →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Sidebar scrollbox -->
+    <div class="events-sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-header">
+          <span>📅</span>
+          <h3>All Upcoming Events & Registrations</h3>
+        </div>
+        <div class="sidebar-scroll">
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">APR 5, 2026</div>
+            <div class="sidebar-item-title">Kuchipudi Foundations New Batch</div>
+            <div class="sidebar-item-tag">Online · 8 Weeks · ₹8,000</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">APR 8, 2026</div>
+            <div class="sidebar-item-title">Group Beginner Batch — Spring</div>
+            <div class="sidebar-item-tag">Online · Weekly · Limited Seats</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">APR 12–13, 2026</div>
+            <div class="sidebar-item-title">Western Contemporary Intensive</div>
+            <div class="sidebar-item-tag">Bangalore · In-Person · ₹3,500</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">APR 20, 2026</div>
+            <div class="sidebar-item-title">Global Masterclass: Abhinaya</div>
+            <div class="sidebar-item-tag">Zoom · 3 Hours · $25 / ₹2,000</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">ONGOING</div>
+            <div class="sidebar-item-title">1-on-1 Private Sessions</div>
+            <div class="sidebar-item-tag">Online · Flexible · DM to Book</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">ONGOING</div>
+            <div class="sidebar-item-title">Learn a Single Dance — Custom</div>
+            <div class="sidebar-item-tag">Your Choice · Anytime · Anywhere</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">MAY 2026</div>
+            <div class="sidebar-item-title">Summer Intensive Dance Camp</div>
+            <div class="sidebar-item-tag">Online + Bangalore · 4 Weeks</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">JUNE 2026</div>
+            <div class="sidebar-item-title">Kuchipudi Intermediate Batch</div>
+            <div class="sidebar-item-tag">Online · 10 Weeks · Enrolling Soon</div>
+          </div>
+          <div class="sidebar-item">
+            <div class="sidebar-item-date">JUL 2026</div>
+            <div class="sidebar-item-title">Wedding Choreography Special</div>
+            <div class="sidebar-item-tag">Custom Batch · Couples & Families</div>
+          </div>
+        </div>
+        <div class="sidebar-cta">
+          <a href="#contact">→ Register / Enquire for Any Event ←</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <div class="section-eyebrow">Student Voices</div>
+    <h2 class="section-title">Testimonials</h2>
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line right"></div>
+    </div>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">I joined Subhiksha's class from Sydney with zero dance background. In 3 months, I performed Kuchipudi at my sister's wedding. The way she teaches — it's patient, precise, and absolutely magical. Nrityiksha changed my life.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">P</div>
+        <div class="author-info">
+          <h4>Priya Venkataraman</h4>
+          <p>Sydney, Australia</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">The "single dance" concept was what drew me in. I needed one piece for a cultural event and didn't want to enroll in a full course. Subhiksha taught me a beautiful Tillana in just 6 sessions. Phenomenal teacher!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">R</div>
+        <div class="author-info">
+          <h4>Rohan Krishnamurthy</h4>
+          <p>London, UK</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">I've taken classes from multiple dance teachers, but Subhiksha's approach is exceptional. She weaves in the history, the emotion, the devotion — not just the steps. My daughter and I both learn together now. Highly recommend!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div class="author-info">
+          <h4>Ananya Pillai</h4>
+          <p>Bangalore, India</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">What sets Nrityiksha apart is the warmth. Subhiksha makes you feel seen, regardless of your level. I'm a complete beginner in my 40s and she made me feel like a dancer from day one. The online format is flawless too.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">M</div>
+        <div class="author-info">
+          <h4>Meena Raghunath</h4>
+          <p>New Jersey, USA</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">The Western contemporary workshop was a revelation. I didn't expect classical and contemporary to feel so complementary. Subhiksha bridges both worlds with such grace. My choreography vocabulary has exploded!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">K</div>
+        <div class="author-info">
+          <h4>Kavitha Sundaram</h4>
+          <p>Chennai, India</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">My 7-year-old started with Nrityiksha's kids' batch and her confidence has skyrocketed. Subhiksha has a rare gift with young learners — disciplined but playful. We're grateful beyond words.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">S</div>
+        <div class="author-info">
+          <h4>Saranya Iyer</h4>
+          <p>Dubai, UAE</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-eyebrow">Connect With Us</div>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line right"></div>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Begin Your Journey</h3>
+      <p>Whether you're curious about one specific dance, a full course, or a workshop — we'd love to hear from you. Reach out and let's find the perfect dance for your story.</p>
+
+      <div class="contact-detail">
+        <div class="contact-icon">📸</div>
+        <div>
+          <h4>Instagram</h4>
+          <p><a href="https://www.instagram.com/nrityiksha/" target="_blank">@nrityiksha</a></p>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">🌍</div>
+        <div>
+          <h4>Classes Available</h4>
+          <p>Worldwide via Zoom · In-person Bangalore</p>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <h4>Session Timings</h4>
+          <p>Flexible to your timezone — IST, EST, GMT, AEST</p>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div class="contact-icon">💌</div>
+        <div>
+          <h4>Response Time</h4>
+          <p>We respond within 24 hours</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div style="margin-bottom: 2rem;">
+        <div class="section-eyebrow" style="justify-content: flex-start; font-size: 0.58rem;">Enquiry Form</div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Priya Sharma">
+        </div>
+        <div class="form-group">
+          <label>Your Location</label>
+          <input type="text" placeholder="Sydney, Australia">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label>I'm Interested In</label>
+        <select>
+          <option value="">Select a class type...</option>
+          <option>Classical Kuchipudi — 1-on-1</option>
+          <option>Classical Kuchipudi — Group Batch</option>
+          <option>Western Contemporary</option>
+          <option>Learn a Single Dance</option>
+          <option>Upcoming Workshop</option>
+          <option>Summer Intensive Camp</option>
+          <option>Wedding / Event Choreography</option>
+          <option>Kids Batch</option>
+          <option>Other / General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Yourself</label>
+        <textarea placeholder="Your dance background, goals, or any questions you have..."></textarea>
+      </div>
+      <button class="btn-primary" style="width: 100%; text-align: center; border: none; font-size: 0.72rem;" onclick="alert('Thank you for your enquiry! Subhiksha will get back to you within 24 hours. 🙏')">
+        Send Enquiry
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo">
+        Nrityiksha
+        <span>नृत्यिक्षा · by Subhiksha Arjun</span>
+      </a>
+      <p>Where ancient Kuchipudi meets the world. Learn classical and contemporary dance from anywhere — one dance, one story, one sacred movement at a time.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/nrityiksha/" target="_blank" class="social-btn" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#contact" class="social-btn" title="Email">✉</a>
+        <a href="#contact" class="social-btn" title="WhatsApp">💬</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#what-we-do">What We Do</a></li>
+        <li><a href="#about">About Subhiksha</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Classes</h4>
+      <ul>
+        <li><a href="#contact">Classical Kuchipudi</a></li>
+        <li><a href="#contact">Western Contemporary</a></li>
+        <li><a href="#contact">1-on-1 Sessions</a></li>
+        <li><a href="#contact">Group Batches</a></li>
+        <li><a href="#contact">Learn One Dance</a></li>
+        <li><a href="#contact">Kids Batches</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Events</h4>
+      <ul>
+        <li><a href="#events">Upcoming Workshops</a></li>
+        <li><a href="#events">Summer Camp 2026</a></li>
+        <li><a href="#events">Global Masterclasses</a></li>
+        <li><a href="#events">Arangetram Support</a></li>
+        <li><a href="#contact">Private Events</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Nrityiksha · Subhiksha Arjun · All Rights Reserved</p>
+    <p style="color: rgba(245,230,176,0.25);">नृत्यिक्षा · The art of sacred movement</p>
+  </div>
+</footer>
+
+<!-- Scroll to top button -->
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold-light)'
+        : '';
+    });
+
+    // Show/hide scroll-to-top
+    const scrollBtn = document.querySelector('.scroll-top');
+    scrollBtn.style.opacity = window.scrollY > 500 ? '1' : '0';
+    scrollBtn.style.pointerEvents = window.scrollY > 500 ? 'auto' : 'none';
+  });
+
+  // Intersection observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.offering-card, .event-card, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, background 0.3s, box-shadow 0.3s';
+    observer.observe(el);
+  });
+
+  // Initialize scroll button hidden
+  document.querySelector('.scroll-top').style.opacity = '0';
+  document.querySelector('.scroll-top').style.transition = 'opacity 0.3s, transform 0.3s';
+</script>
+</body>
+</html>
